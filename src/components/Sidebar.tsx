@@ -1,7 +1,7 @@
 const Sidebar = () => {
   return (
-    <aside className="absolute top-0 right-0 -z-10 block h-2/5 w-screen bg-sidebarMobile bg-cover bg-no-repeat md:static md:z-0 md:inline-block md:h-[568px] md:w-[274px] md:bg-sidebarDesktop md:bg-no-repeat">
-      <div className="flex h-5/6 items-center justify-center gap-4 md:h-fit md:flex-col md:items-stretch md:gap-8 md:p-10">
+    <aside className="absolute top-0 right-0 -z-10 block h-1/3 w-screen bg-sidebarMobile bg-cover bg-no-repeat md:static md:z-0 md:inline-block md:h-[568px] md:w-[274px] md:bg-sidebarDesktop md:bg-no-repeat">
+      <div className="flex h-5/6 items-start justify-center gap-4 pt-12 md:h-fit md:flex-col md:items-stretch md:gap-8 md:p-10">
         <div className="md:flex md:items-center md:gap-4">
           <span className="flex h-10 w-10 items-center justify-center rounded-full border-0 bg-primary-pastel-blue">
             <p className="font-semibold text-primary-marine-blue">1</p>

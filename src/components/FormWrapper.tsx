@@ -1,19 +1,13 @@
+import ActionButtons from './ActionButtons';
 import PersonalInfo from './PersonalInfo';
 
 const FormWrapper = () => {
   return (
-    <section className="flex flex-col">
-      <h1 className="capitalize">personal info</h1>
-      <p>please provide your name, email address, and phone number.</p>
+    <section className="mx-4 flex flex-col justify-between px-4 pt-8 pb-6 md:p-12 md:pb-6">
       <form>
         <PersonalInfo />
       </form>
-      <button
-        type="button"
-        className="shrink-0 bg-primary-strawberry-red p-2 capitalize text-neutral-white"
-      >
-        next step
-      </button>
+      <ActionButtons />
     </section>
   );
 };
