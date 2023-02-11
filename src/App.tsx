@@ -1,8 +1,12 @@
+import FormSection from './components/FormWrapper';
+import Sidebar from './components/Sidebar';
+
 const App = () => {
   return (
-    <div>
-      <h1 className="text-primary-strawberry-red text-3xl font-bold underline">Hello</h1>
-    </div>
+    <main className="flex max-w-7xl gap-5 rounded-2xl bg-neutral-white p-4 shadow-md">
+      <Sidebar />
+      <FormSection />
+    </main>
   );
 };
 

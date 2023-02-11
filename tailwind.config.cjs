@@ -6,6 +6,10 @@ module.exports = {
       display: ['Ubuntu', 'monospace'],
     },
     extend: {
+      backgroundImage: {
+        sidebarDesktop: "url('./assets/bg-sidebar-desktop.svg')",
+        sidebarMobile: "url('./assets/bg-sidebar-mobile.svg')",
+      },
       colors: {
         primary: {
           marine: {
