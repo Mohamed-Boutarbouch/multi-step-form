@@ -1,6 +1,6 @@
 const ActionButtons = () => {
   return (
-    <div className="absolute left-0 bottom-0 flex h-24 w-screen items-center justify-between bg-neutral-white px-3 md:px-0 md:static md:h-fit md:w-full">
+    <div className="absolute left-0 bottom-0 flex h-10 w-screen items-center justify-between bg-neutral-white px-3 md:static md:h-fit md:w-full md:px-0">
       <button
         type="button"
         className="h-12 bg-primary-purplish-blue p-2 capitalize text-neutral-white"

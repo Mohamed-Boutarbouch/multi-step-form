@@ -1,9 +1,9 @@
 const PersonalInfo = () => {
   return (
-    <>
-      <h1 className="mb-2 text-xl font-bold capitalize text-primary-marine-blue md:text-4xl">
+    <fieldset>
+      <legend className="mb-2 text-xl font-bold capitalize text-primary-marine-blue md:text-4xl">
         personal info
-      </h1>
+      </legend>
       <p className="mb-3 text-neutral-cool-gray md:mb-10">
         Please provide your name, email address, and phone number.
       </p>
@@ -56,7 +56,7 @@ const PersonalInfo = () => {
           className="mb-4 h-10 rounded-md border border-neutral-cool-gray px-4 placeholder:text-neutral-cool-gray md:mb-6"
         />
       </div>
-    </>
+    </fieldset>
   );
 };
 
