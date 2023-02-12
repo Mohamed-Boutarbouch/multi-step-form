@@ -10,8 +10,8 @@ const FormWrapper = () => {
       <form className="">
         {/* <PersonalInfo /> */}
         {/* <PlanSelection /> */}
-        {/* <AddOns /> */}
-        <Summary />
+        <AddOns />
+        {/* <Summary /> */}
       </form>
       <ActionButtons />
     </section>
