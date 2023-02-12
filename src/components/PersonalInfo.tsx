@@ -1,8 +1,8 @@
 const PersonalInfo = () => {
   return (
     <fieldset>
-      <legend className="mb-2 text-xl font-bold capitalize text-primary-marine-blue md:text-4xl">
-        personal info
+      <legend className="mb-2 text-xl font-bold text-primary-marine-blue md:text-4xl">
+        Personal Info
       </legend>
       <p className="mb-3 text-neutral-cool-gray md:mb-10">
         Please provide your name, email address, and phone number.

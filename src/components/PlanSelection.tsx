@@ -5,8 +5,8 @@ import proIcon from '../assets/icon-pro.svg';
 const PlanSelection = () => {
   return (
     <fieldset>
-      <legend className="mb-2 text-xl font-bold capitalize text-primary-marine-blue md:text-4xl">
-        select your plan
+      <legend className="mb-2 text-xl font-bold text-primary-marine-blue md:text-4xl">
+        Select Your Plan
       </legend>
       <p className="mb-3 text-neutral-cool-gray md:mb-10">
         You have the option of monthly or yearly billing.
@@ -16,7 +16,7 @@ const PlanSelection = () => {
           <input type="radio" id="arcade" name="billing" value="arcade" className="peer hidden" />
           <label
             htmlFor="arcade"
-            className="flex w-full cursor-pointer justify-start rounded-lg border border-gray-200 bg-white p-5 text-gray-500 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia md:h-52 md:w-40"
+            className="flex w-full cursor-pointer justify-start rounded-lg border border-neutral-light-gray bg-white p-5 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia md:h-52 md:w-36"
           >
             <div className="flex items-start gap-4 md:flex-col md:justify-between">
               <img src={arcadeIcon} alt="arcade icon" />
@@ -38,7 +38,7 @@ const PlanSelection = () => {
           />
           <label
             htmlFor="advanced"
-            className="flex w-full cursor-pointer justify-start rounded-lg border border-gray-200 bg-white p-5 text-gray-500 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia md:h-52 md:w-40"
+            className="flex w-full cursor-pointer justify-start rounded-lg border border-neutral-light-gray bg-white p-5 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia md:h-52 md:w-36"
           >
             <div className="flex items-start gap-4 md:flex-col md:justify-between">
               <img src={advancedIcon} alt="advanced icon" />
@@ -54,7 +54,7 @@ const PlanSelection = () => {
           <input type="radio" id="pro" name="billing" value="pro" className="peer hidden" />
           <label
             htmlFor="pro"
-            className="flex w-full cursor-pointer justify-start rounded-lg border border-gray-200 bg-white p-5 text-gray-500 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia md:h-52 md:w-40"
+            className="flex w-full cursor-pointer justify-start rounded-lg border border-neutral-light-gray bg-white p-5 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia md:h-52 md:w-36"
           >
             <div className="flex items-start gap-4 md:flex-col md:justify-between">
               <img src={proIcon} alt="pro icon" />
