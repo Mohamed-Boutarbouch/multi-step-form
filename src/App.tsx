@@ -1,12 +1,14 @@
+import FormArea from './components/FormArea';
 import FormWrapper from './components/FormWrapper';
+import Layout from './components/Layout';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
   return (
-    <main className="gap-5 rounded-2xl bg-neutral-white shadow-md md:flex md:p-4">
+    <Layout>
       <Sidebar />
-      <FormWrapper />
-    </main>
+      <FormArea />
+    </Layout>
   );
 };
 
