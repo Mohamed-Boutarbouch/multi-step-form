@@ -1,9 +1,7 @@
-import FormHeaderContainer from './FormHeaderContainer';
+import FormHeaderContainer from '../FormHeaderContainer';
 
 const SummaryStep = () => {
   return (
-    // Finishing up
-    // Double-check everything looks OK before confirming.
     <FormHeaderContainer>
       <div className="mb-4 flex flex-col rounded-lg bg-neutral-alabaster p-4">
         <div className="flex items-center justify-between">

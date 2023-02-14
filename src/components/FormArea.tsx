@@ -1,8 +1,8 @@
 import ActionButtons from './ActionButtons';
-import PersonalInfoStep from './PersonalInfoStep';
-import PlanSelectionStep from './PlanSelectionStep';
-import AddOnsStep from './AddOnsStep';
-import SummaryStep from './SummaryStep';
+import PersonalInfoStep from './formSteps/PersonalInfoStep';
+import PlanSelectionStep from './formSteps/PlanSelectionStep';
+import AddOnsStep from './formSteps/AddOnsStep';
+import SummaryStep from './formSteps/SummaryStep';
 
 const FormArea = () => {
   return (
