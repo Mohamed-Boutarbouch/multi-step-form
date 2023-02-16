@@ -1,23 +1,35 @@
+import { ChangeEvent } from 'react';
 import { AddOnsCheckboxProps } from '../dummy-data';
 
-const AddOnsCheckboxInput: React.FC<AddOnsCheckboxProps> = ({
-  inputName,
+interface CheckboxStateProps {
+  isChecked: boolean;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+type CheckboxProps = AddOnsCheckboxProps & CheckboxStateProps;
+
+const AddOnsCheckboxInput: React.FC<CheckboxProps> = ({
+  checkboxName,
   details,
-  title,
   monthlySubscriptionAddition: perMonth,
-  yearlySubscriptionAddition: perYear,
+  yearlySubscriptionAddition,
+  title,
+  onChange,
+  isChecked,
 }) => {
   return (
     <li className="relative">
       <input
         type="checkbox"
-        id={inputName}
-        name={inputName}
+        id={checkboxName}
+        name={checkboxName}
         value={title}
-        className="peer absolute top-[35%] left-[22px] h-6 w-6 accent-primary-purplish-blue"
+        className="peer pointer-events-none absolute top-[35%] left-[22px] h-6 w-6 accent-primary-purplish-blue"
+        onChange={onChange}
+        checked={isChecked}
       />
       <label
-        htmlFor={inputName}
+        htmlFor={checkboxName}
         className="flex w-full cursor-pointer items-center justify-between rounded-lg border border-neutral-light-gray bg-white px-5 py-4 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia"
       >
         <div className="flex items-center justify-between gap-5">

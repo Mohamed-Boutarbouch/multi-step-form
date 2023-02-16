@@ -89,7 +89,7 @@ export const stepsCounterData: StepsCounterProps[] = [
 
 export interface PlanSelectionRadioProps {
   id: number;
-  radioName: string;
+  radioName: 'arcade' | 'advanced' | 'pro';
   monthlySubscription: number;
   yearlySubscription: number;
   radioIcon: string;
@@ -122,7 +122,7 @@ export const planSelectionRadioData: PlanSelectionRadioProps[] = [
 export interface AddOnsCheckboxProps {
   id: number;
   title: string;
-  inputName: string;
+  checkboxName: 'onlineService' | 'largerStorage' | 'customizableProfile';
   details: string;
   monthlySubscriptionAddition: number;
   yearlySubscriptionAddition: number;
@@ -132,7 +132,7 @@ export const addOnsCheckboxData: AddOnsCheckboxProps[] = [
   {
     id: 1,
     title: 'Online service',
-    inputName: 'online-service',
+    checkboxName: 'onlineService',
     details: 'Access to multiplayer games',
     monthlySubscriptionAddition: 1,
     yearlySubscriptionAddition: 10,
@@ -140,7 +140,7 @@ export const addOnsCheckboxData: AddOnsCheckboxProps[] = [
   {
     id: 2,
     title: 'Larger storage',
-    inputName: 'larger-storage',
+    checkboxName: 'largerStorage',
     details: 'Extra 1TB of cloud save',
     monthlySubscriptionAddition: 2,
     yearlySubscriptionAddition: 20,
@@ -148,7 +148,7 @@ export const addOnsCheckboxData: AddOnsCheckboxProps[] = [
   {
     id: 3,
     title: 'Customizable profile',
-    inputName: 'customizable-profile',
+    checkboxName: 'customizableProfile',
     details: 'Custom theme on your profile',
     monthlySubscriptionAddition: 2,
     yearlySubscriptionAddition: 20,
