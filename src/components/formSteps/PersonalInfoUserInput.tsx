@@ -1,10 +1,21 @@
-import { personalInfoInputProps } from '../dummy-data';
+import { ChangeEvent } from 'react';
+import { PersonalInfoInputProps } from '../dummy-data';
 
-const PersonalInfoUserInput: React.FC<personalInfoInputProps> = ({
+interface InputStateProps {
+  value: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  inputPlaceholder: string;
+}
+
+type InputProps = PersonalInfoInputProps & InputStateProps;
+
+const PersonalInfoUserInput: React.FC<InputProps> = ({
   inputLabel,
   inputName,
   inputPlaceholder,
   inputType,
+  onChange,
+  value,
 }) => {
   return (
     <article>
@@ -22,6 +33,8 @@ const PersonalInfoUserInput: React.FC<personalInfoInputProps> = ({
         id={inputName}
         placeholder={inputPlaceholder}
         className="h-10 w-full rounded-md border border-neutral-cool-gray px-4 outline-primary-purplish-blue placeholder:text-neutral-cool-gray"
+        value={value}
+        onChange={onChange}
       />
     </article>
   );

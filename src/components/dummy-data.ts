@@ -2,18 +2,18 @@ import arcadeIcon from '../assets/icon-arcade.svg';
 import advancedIcon from '../assets/icon-advanced.svg';
 import proIcon from '../assets/icon-pro.svg';
 
-export interface personalInfoInputProps {
+export interface PersonalInfoInputProps {
   id: number;
   inputName: string;
   inputLabel: string;
-  inputType: string;
+  inputType: 'text' | 'email' | 'tel';
   inputPlaceholder: string;
 }
 
-export const personalInfoInputData: personalInfoInputProps[] = [
+export const personalInfoInputData: PersonalInfoInputProps[] = [
   {
     id: 1,
-    inputName: 'name',
+    inputName: 'username',
     inputLabel: 'name',
     inputType: 'text',
     inputPlaceholder: 'e.g. Stephen King',
@@ -34,34 +34,29 @@ export const personalInfoInputData: personalInfoInputProps[] = [
   },
 ];
 
-// export interface formHeaderProps {
-//   id: number;
-//   legend: string;
-//   details: string;
-// }
+export interface FormHeaderProps {
+  legend: string;
+  details: string;
+}
 
-// export const formHeaderData: formHeaderProps[] = [
-//   {
-//     id: 1,
-//     legend: 'Personal info',
-//     details: 'Please provide your name, email address, and phone number.',
-//   },
-//   {
-//     id: 2,
-//     legend: 'Select your plan',
-//     details: 'You have the option of monthly or yearly billing.',
-//   },
-//   {
-//     id: 3,
-//     legend: 'Pick add-ons',
-//     details: 'Add-ons help enhance your gaming experience.',
-//   },
-//   {
-//     id: 4,
-//     legend: 'Finishing up',
-//     details: 'Double-check everything looks OK before confirming.',
-//   },
-// ];
+export const formHeaderData = [
+  {
+    legend: 'Personal info',
+    details: 'Please provide your name, email address, and phone number.',
+  },
+  {
+    legend: 'Select your plan',
+    details: 'You have the option of monthly or yearly billing.',
+  },
+  {
+    legend: 'Pick add-ons',
+    details: 'Add-ons help enhance your gaming experience.',
+  },
+  {
+    legend: 'Finishing up',
+    details: 'Double-check everything looks OK before confirming.',
+  },
+];
 
 export interface StepsCounterProps {
   id: number;
