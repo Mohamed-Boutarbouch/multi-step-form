@@ -16,6 +16,7 @@ const PlanSelectionStep = () => {
               <PlanSelectionRadioInput
                 key={radioInput.id}
                 {...radioInput}
+                isYearlyPlan={formInputs.yearlySubscription}
                 currentPlan={formInputs.billingPlan}
                 onChange={changeHandler}
               />

@@ -21,6 +21,7 @@ const AddOnsStep = () => {
               <AddOnsCheckboxInput
                 key={checkboxData.id}
                 {...checkboxData}
+                isYearlyPlan={formInputs.yearlySubscription}
                 isChecked={formInputs[checkboxData.checkboxName as keyof CheckboxFormProps]}
                 onChange={changeHandler}
               />

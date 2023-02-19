@@ -3,6 +3,7 @@ import { PlanSelectionRadioProps } from '../dummy-data';
 
 interface RadioStateProps {
   currentPlan: string;
+  isYearlyPlan: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -15,7 +16,21 @@ const PlanSelectionRadioInput: React.FC<RadioProps> = ({
   yearlySubscription,
   onChange,
   currentPlan,
+  isYearlyPlan,
 }) => {
+  const monthYearPlan = (
+    <>
+      {isYearlyPlan ? (
+        <>
+          <p className="text-neutral-cool-gray">${`${yearlySubscription}`}/$yr</p>
+          <p className="text-sm text-primary-marine-blue">2 month free</p>
+        </>
+      ) : (
+        <p className="text-neutral-cool-gray">${`${monthlySubscription}`}/mo</p>
+      )}
+    </>
+  );
+
   return (
     <li>
       <input
@@ -35,9 +50,7 @@ const PlanSelectionRadioInput: React.FC<RadioProps> = ({
           <img src={radioIcon} alt={`${radioValue} icon`} />
           <div className="w-full">
             <h3 className="font-bold capitalize text-primary-marine-blue">{radioValue}</h3>
-            <p className="text-neutral-cool-gray">${`${monthlySubscription}`}/mo</p>
-            {/* <p className="text-neutral-cool-gray">${`${yearlySubscription}`}/yr</p> */}
-            {/* <p className="text-sm text-primary-marine-blue">2 month free</p> */}
+            {monthYearPlan}
           </div>
         </div>
       </label>

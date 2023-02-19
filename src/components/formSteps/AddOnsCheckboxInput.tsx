@@ -3,6 +3,7 @@ import { AddOnsCheckboxProps } from '../dummy-data';
 
 interface CheckboxStateProps {
   isChecked: boolean;
+  isYearlyPlan: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -16,7 +17,14 @@ const AddOnsCheckboxInput: React.FC<CheckboxProps> = ({
   title,
   onChange,
   isChecked,
+  isYearlyPlan,
 }) => {
+  const monthYearPlan = (
+    <p className="text-primary-purplish-blue">{`+$${isYearlyPlan ? perYear : perMonth}/${
+      isYearlyPlan ? 'yr' : 'mo'
+    }`}</p>
+  );
+
   return (
     <li className="relative">
       <input
@@ -39,7 +47,7 @@ const AddOnsCheckboxInput: React.FC<CheckboxProps> = ({
             <p className="text-sm text-neutral-cool-gray">{details}</p>
           </div>
         </div>
-        <p className="text-primary-purplish-blue">+${`${perMonth}`}/mo</p>
+        {monthYearPlan}
       </label>
     </li>
   );
