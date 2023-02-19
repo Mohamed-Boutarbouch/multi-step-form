@@ -12,7 +12,7 @@ const AddOnsCheckboxInput: React.FC<CheckboxProps> = ({
   checkboxName,
   details,
   monthlySubscriptionAddition: perMonth,
-  yearlySubscriptionAddition,
+  yearlySubscriptionAddition: perYear,
   title,
   onChange,
   isChecked,

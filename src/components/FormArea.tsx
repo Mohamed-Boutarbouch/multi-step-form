@@ -8,8 +8,8 @@ const FormArea = () => {
   return (
     <form className="flex w-full justify-center md:mx-auto md:max-w-[500px] md:flex-col md:justify-between md:py-8">
       {/* <PersonalInfoStep /> */}
-      {/* <PlanSelectionStep /> */}
-      <AddOnsStep />
+      <PlanSelectionStep />
+      {/* <AddOnsStep /> */}
       {/* <SummaryStep /> */}
       <ActionButtons />
     </form>

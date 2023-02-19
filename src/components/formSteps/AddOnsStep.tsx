@@ -21,8 +21,6 @@ const AddOnsStep = () => {
   const checkboxChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = event.target;
 
-    console.dir(event.target);
-
     setCheckboxFormValues({ ...checkboxFormValues, [name]: checked });
   };
 

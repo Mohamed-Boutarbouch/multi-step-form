@@ -89,7 +89,7 @@ export const stepsCounterData: StepsCounterProps[] = [
 
 export interface PlanSelectionRadioProps {
   id: number;
-  radioName: 'arcade' | 'advanced' | 'pro';
+  radioValue: 'arcade' | 'advanced' | 'pro';
   monthlySubscription: number;
   yearlySubscription: number;
   radioIcon: string;
@@ -98,21 +98,21 @@ export interface PlanSelectionRadioProps {
 export const planSelectionRadioData: PlanSelectionRadioProps[] = [
   {
     id: 1,
-    radioName: 'arcade',
+    radioValue: 'arcade',
     monthlySubscription: 9,
     yearlySubscription: 90,
     radioIcon: arcadeIcon,
   },
   {
     id: 2,
-    radioName: 'advanced',
+    radioValue: 'advanced',
     monthlySubscription: 12,
     yearlySubscription: 120,
     radioIcon: advancedIcon,
   },
   {
     id: 3,
-    radioName: 'pro',
+    radioValue: 'pro',
     monthlySubscription: 15,
     yearlySubscription: 150,
     radioIcon: proIcon,
