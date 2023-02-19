@@ -6,7 +6,7 @@ interface FormHeaderContainerProps {
 }
 
 const FormHeaderContainer: React.FC<FormHeaderContainerProps> = ({ children }) => {
-  const { steps: currentStep } = useFormContext();
+  const { currentStep } = useFormContext();
 
   return (
     <fieldset className="flex h-full w-11/12 flex-col justify-between gap-6 md:block md:w-full">

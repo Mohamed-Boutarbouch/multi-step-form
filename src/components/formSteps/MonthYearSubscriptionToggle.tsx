@@ -5,7 +5,7 @@ const MonthYearSubscriptionToggle = () => {
 
   const { yearlySubscription: isYearlySub } = formInputs;
 
-  const activeStyle = (isToggled: boolean) =>
+  const activeStyle = (isToggled: boolean): string =>
     isToggled ? 'text-primary-marine-blue' : 'text-neutral-cool-gray';
 
   return (
