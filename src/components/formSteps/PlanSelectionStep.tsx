@@ -2,26 +2,10 @@ import FormHeaderContainer from '../FormHeaderContainer';
 import PlanSelectionRadioInput from './PlanSelectionRadioInput';
 import { planSelectionRadioData } from '../dummy-data';
 import MonthYearSubscriptionToggle from './MonthYearSubscriptionToggle';
-import { ChangeEvent, useState } from 'react';
-
-interface RadioFormProps {
-  billingPlan: string;
-}
-
-const initState = {
-  billingPlan: 'arcade',
-};
+import useFormContext from '../../hooks/useFormContent';
 
 const PlanSelectionStep = () => {
-  const [radioFormValues, setRadioFormValues] = useState<RadioFormProps>(initState);
-
-  const radioChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-
-    setRadioFormValues({ ...radioFormValues, [name]: value });
-  };
-
-  console.log(radioFormValues);
+  const { formInputs, changeHandler } = useFormContext();
 
   return (
     <FormHeaderContainer>
@@ -32,8 +16,8 @@ const PlanSelectionStep = () => {
               <PlanSelectionRadioInput
                 key={radioInput.id}
                 {...radioInput}
-                currentPlan={radioFormValues.billingPlan}
-                onChange={radioChangeHandler}
+                currentPlan={formInputs.billingPlan}
+                onChange={changeHandler}
               />
             );
           })}

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import useFormContext from '../../hooks/useFormContent';
 import { addOnsCheckboxData } from '../dummy-data';
 import FormHeaderContainer from '../FormHeaderContainer';
 import AddOnsCheckboxInput from './AddOnsCheckboxInput';
@@ -9,20 +9,8 @@ interface CheckboxFormProps {
   customizableProfile: boolean;
 }
 
-const initState = {
-  onlineService: false,
-  largerStorage: false,
-  customizableProfile: false,
-};
-
 const AddOnsStep = () => {
-  const [checkboxFormValues, setCheckboxFormValues] = useState<CheckboxFormProps>(initState);
-
-  const checkboxChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = event.target;
-
-    setCheckboxFormValues({ ...checkboxFormValues, [name]: checked });
-  };
+  const { formInputs, changeHandler } = useFormContext();
 
   return (
     <FormHeaderContainer>
@@ -33,8 +21,8 @@ const AddOnsStep = () => {
               <AddOnsCheckboxInput
                 key={checkboxData.id}
                 {...checkboxData}
-                isChecked={checkboxFormValues[checkboxData.checkboxName as keyof CheckboxFormProps]}
-                onChange={checkboxChangeHandler}
+                isChecked={formInputs[checkboxData.checkboxName as keyof CheckboxFormProps]}
+                onChange={changeHandler}
               />
             );
           })}

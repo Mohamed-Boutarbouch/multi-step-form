@@ -1,29 +1,16 @@
-import { ChangeEvent, useState } from 'react';
 import { personalInfoInputData } from '../dummy-data';
 import FormHeaderContainer from '../FormHeaderContainer';
 import PersonalInfoUserInput from './PersonalInfoUserInput';
+import useFormContext from '../../hooks/useFormContent';
 
-interface InputFormProps {
+interface TextInputProps {
   username: string;
   email: string;
   phone: string;
 }
 
-const initState = {
-  username: '',
-  email: '',
-  phone: '',
-};
-
 const PersonalInfoStep = () => {
-  const [inputFormValues, setInputFormValues] = useState<InputFormProps>(initState);
-
-  const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setInputFormValues({ ...inputFormValues, [name]: value });
-  };
-
-  console.log(inputFormValues);
+  const { formInputs, changeHandler } = useFormContext();
 
   return (
     <FormHeaderContainer>
@@ -33,8 +20,8 @@ const PersonalInfoStep = () => {
             <PersonalInfoUserInput
               key={inputData.id}
               {...inputData}
-              value={inputFormValues[inputData.inputName as keyof InputFormProps]}
-              onChange={inputChangeHandler}
+              value={formInputs[inputData.inputName as keyof TextInputProps]}
+              onChange={changeHandler}
             />
           );
         })}
