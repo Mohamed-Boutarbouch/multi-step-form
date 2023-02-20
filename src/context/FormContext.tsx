@@ -1,4 +1,12 @@
-import { createContext, useState, ReactNode, ChangeEvent, SetStateAction, Dispatch } from 'react';
+import {
+  createContext,
+  useState,
+  ReactNode,
+  ChangeEvent,
+  FormEvent,
+  SetStateAction,
+  Dispatch,
+} from 'react';
 import {
   addOnsCheckboxData,
   formHeaderData,
@@ -30,6 +38,10 @@ interface FormContextProps {
   selectedAddOns: AddOnsCheckboxProps[];
   totalMonth: number;
   totalYear: number;
+  isLastStep: boolean;
+  confirmSubmissionHandler: () => void;
+  submitHandler: (e: FormEvent<HTMLFormElement>) => void;
+  formSubmitted: boolean;
 }
 
 const initialState = {
@@ -55,6 +67,10 @@ export const FormContext = createContext<FormContextProps>({
   selectedAddOns: [],
   totalMonth: 0,
   totalYear: 0,
+  isLastStep: false,
+  confirmSubmissionHandler: () => {},
+  submitHandler: () => {},
+  formSubmitted: false,
 });
 
 interface FormProviderProps {
@@ -64,8 +80,12 @@ interface FormProviderProps {
 export const FormProvider = ({ children }: FormProviderProps) => {
   const [formInputs, setFormInputs] = useState<FormContextProps['formInputs']>(initialState);
   const [currentStep, setCurrentStep] = useState(0);
+  const [confirmSubmission, setConfirmSubmission] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const maxFormSteps = formHeaderData.length - 1;
+
+  const isLastStep = maxFormSteps === currentStep;
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { type, name } = e.target;
@@ -126,6 +146,16 @@ export const FormProvider = ({ children }: FormProviderProps) => {
   const totalMonth = billingPlanMonth + addOnsMonth;
   const totalYear = billingPlanYear + addOnsYear;
 
+  const confirmSubmissionHandler = () => {
+    setConfirmSubmission(true);
+  };
+
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    confirmSubmission && setFormSubmitted(true);
+  };
+
   return (
     <FormContext.Provider
       value={{
@@ -140,6 +170,10 @@ export const FormProvider = ({ children }: FormProviderProps) => {
         goToBillingPlan,
         totalMonth,
         totalYear,
+        isLastStep,
+        submitHandler,
+        confirmSubmissionHandler,
+        formSubmitted,
       }}
     >
       {children}

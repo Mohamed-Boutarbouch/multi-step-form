@@ -4,17 +4,27 @@ import PlanSelectionStep from './formSteps/PlanSelectionStep';
 import AddOnsStep from './formSteps/AddOnsStep';
 import SummaryStep from './formSteps/SummaryStep';
 import useFormContext from '../hooks/useFormContent';
+import ThankYou from './ThankYou';
 
 const FormArea = () => {
-  const { currentStep } = useFormContext();
+  const { currentStep, submitHandler, formSubmitted: isFormSubmitted } = useFormContext();
 
   const activeStep = [<PersonalInfoStep />, <PlanSelectionStep />, <AddOnsStep />, <SummaryStep />];
 
   return (
-    <form className="flex w-full justify-center md:mx-auto md:max-w-[500px] md:flex-col md:justify-between md:py-8">
-      {activeStep[currentStep]}
-      <ActionButtons />
-    </form>
+    <>
+      {isFormSubmitted ? (
+        <ThankYou />
+      ) : (
+        <form
+          className="flex w-full justify-center md:mx-auto md:max-w-[500px] md:flex-col md:justify-between md:py-8"
+          onSubmit={submitHandler}
+        >
+          {activeStep[currentStep]}
+          <ActionButtons />
+        </form>
+      )}
+    </>
   );
 };
 
