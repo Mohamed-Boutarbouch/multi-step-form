@@ -3,7 +3,14 @@ import FormHeaderContainer from '../FormHeaderContainer';
 import SummarySelectedAddOns from './SummarySelectedAddOns';
 
 const SummaryStep = () => {
-  const { selectedAddOns, formInputs, selectedBillingPlan } = useFormContext();
+  const {
+    selectedAddOns,
+    formInputs,
+    selectedBillingPlan,
+    goToBillingPlan,
+    totalMonth,
+    totalYear,
+  } = useFormContext();
   const { yearlySubscription } = formInputs;
 
   const currentBillingPlan = { ...selectedBillingPlan[0] };
@@ -15,8 +22,14 @@ const SummaryStep = () => {
   } = currentBillingPlan;
 
   const monthYearPlan = (
-    <p className="font-bold text-primary-marine-blue">{`+$${
-      yearlySubscription ? yearly : monthly
+    <p className="font-bold text-primary-marine-blue">{`$${yearlySubscription ? yearly : monthly}/${
+      yearlySubscription ? 'yr' : 'mo'
+    }`}</p>
+  );
+
+  const monthYearTotal = (
+    <p className="text-xl font-bold text-primary-purplish-blue">{`$${
+      yearlySubscription ? totalYear : totalMonth
     }/${yearlySubscription ? 'yr' : 'mo'}`}</p>
   );
 
@@ -28,9 +41,13 @@ const SummaryStep = () => {
             <p className="font-semibold capitalize text-primary-marine-blue">
               {`${radioValue} (${yearlySubscription ? 'yearly' : 'monthly'})`}
             </p>
-            <p className="w-fit cursor-pointer capitalize text-neutral-cool-gray underline hover:text-primary-purplish-blue">
+            <button
+              type="button"
+              className="w-fit cursor-pointer capitalize text-neutral-cool-gray underline hover:text-primary-purplish-blue"
+              onClick={goToBillingPlan}
+            >
               change
-            </p>
+            </button>
           </div>
           {monthYearPlan}
         </div>
@@ -49,8 +66,10 @@ const SummaryStep = () => {
       </div>
 
       <div className="flex items-center justify-between p-4">
-        <p className="text-neutral-cool-gray">Total (per month)</p>
-        <p className="text-xl font-bold text-primary-purplish-blue">+$12/mo</p>
+        <p className="text-neutral-cool-gray">
+          Total {`(per ${yearlySubscription ? 'year' : 'month'})`}
+        </p>
+        {monthYearTotal}
       </div>
     </FormHeaderContainer>
   );

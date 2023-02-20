@@ -18,13 +18,6 @@ interface formInputProps {
   customizableProfile: boolean;
 }
 
-interface AddOnsKeys {
-  onlineService: boolean;
-  largerStorage: boolean;
-  customizableProfile: boolean;
-}
-
-// Define the type of the form context data
 interface FormContextProps {
   formInputs: formInputProps;
   setFormInputs: Dispatch<SetStateAction<formInputProps>>;
@@ -32,8 +25,11 @@ interface FormContextProps {
   currentStep: number;
   nextStep: () => void;
   prevStep: () => void;
+  goToBillingPlan: () => void;
   selectedBillingPlan: PlanSelectionRadioProps[];
   selectedAddOns: AddOnsCheckboxProps[];
+  totalMonth: number;
+  totalYear: number;
 }
 
 const initialState = {
@@ -47,7 +43,6 @@ const initialState = {
   customizableProfile: false,
 };
 
-// Create the form context with an initial value
 export const FormContext = createContext<FormContextProps>({
   formInputs: initialState,
   setFormInputs: () => {},
@@ -55,24 +50,23 @@ export const FormContext = createContext<FormContextProps>({
   currentStep: 0,
   nextStep() {},
   prevStep() {},
+  goToBillingPlan() {},
   selectedBillingPlan: [],
   selectedAddOns: [],
+  totalMonth: 0,
+  totalYear: 0,
 });
 
-// Define the props for the form provider component
 interface FormProviderProps {
   children: ReactNode;
 }
 
-// Define the form provider component
 export const FormProvider = ({ children }: FormProviderProps) => {
-  // Set up state for the form data
   const [formInputs, setFormInputs] = useState<FormContextProps['formInputs']>(initialState);
   const [currentStep, setCurrentStep] = useState(0);
 
   const maxFormSteps = formHeaderData.length - 1;
 
-  // Define a function to handle changes to the form data
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { type, name } = e.target;
 
@@ -96,12 +90,16 @@ export const FormProvider = ({ children }: FormProviderProps) => {
     setCurrentStep(currentStep - 1);
   };
 
-  // Toggle pricing based on monthly/yearly subscription
+  const goToBillingPlan = () => {
+    setCurrentStep(1);
+  };
+
   const { username, email, phone, yearlySubscription, billingPlan, ...AddOns } = formInputs;
 
-  const selectedBillingPlan = planSelectionRadioData.filter((v) => v.radioValue === billingPlan);
+  const selectedBillingPlan = planSelectionRadioData.filter(
+    (plan) => plan.radioValue === billingPlan,
+  );
 
-  // Remove type any later
   // Any type to be fixed later
   const selectedAddOnsArr = Object.keys(AddOns).filter((el) => (AddOns as any)[el] !== false);
 
@@ -109,7 +107,25 @@ export const FormProvider = ({ children }: FormProviderProps) => {
     return selectedAddOnsArr.some((elArr) => elObj.checkboxName === elArr);
   });
 
-  // Render the form context provider with its value set to the form data and change handler
+  const billingPlanMonth = selectedBillingPlan.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.monthlySubscription;
+  }, 0);
+
+  const billingPlanYear = selectedBillingPlan.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.yearlySubscription;
+  }, 0);
+
+  const addOnsMonth = selectedAddOns.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.monthlySubscriptionAddition;
+  }, 0);
+
+  const addOnsYear = selectedAddOns.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.yearlySubscriptionAddition;
+  }, 0);
+
+  const totalMonth = billingPlanMonth + addOnsMonth;
+  const totalYear = billingPlanYear + addOnsYear;
+
   return (
     <FormContext.Provider
       value={{
@@ -121,6 +137,9 @@ export const FormProvider = ({ children }: FormProviderProps) => {
         prevStep,
         selectedBillingPlan,
         selectedAddOns,
+        goToBillingPlan,
+        totalMonth,
+        totalYear,
       }}
     >
       {children}
