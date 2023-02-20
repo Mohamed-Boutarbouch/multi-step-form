@@ -1,5 +1,11 @@
 import { createContext, useState, ReactNode, ChangeEvent, SetStateAction, Dispatch } from 'react';
-import { formHeaderData } from '../components/dummy-data';
+import {
+  addOnsCheckboxData,
+  formHeaderData,
+  AddOnsCheckboxProps,
+  planSelectionRadioData,
+  PlanSelectionRadioProps,
+} from '../components/dummy-data';
 
 interface formInputProps {
   username: string;
@@ -7,6 +13,12 @@ interface formInputProps {
   phone: string;
   billingPlan: string;
   yearlySubscription: boolean;
+  onlineService: boolean;
+  largerStorage: boolean;
+  customizableProfile: boolean;
+}
+
+interface AddOnsKeys {
   onlineService: boolean;
   largerStorage: boolean;
   customizableProfile: boolean;
@@ -20,6 +32,8 @@ interface FormContextProps {
   currentStep: number;
   nextStep: () => void;
   prevStep: () => void;
+  selectedBillingPlan: PlanSelectionRadioProps[];
+  selectedAddOns: AddOnsCheckboxProps[];
 }
 
 const initialState = {
@@ -41,6 +55,8 @@ export const FormContext = createContext<FormContextProps>({
   currentStep: 0,
   nextStep() {},
   prevStep() {},
+  selectedBillingPlan: [],
+  selectedAddOns: [],
 });
 
 // Define the props for the form provider component
@@ -80,10 +96,32 @@ export const FormProvider = ({ children }: FormProviderProps) => {
     setCurrentStep(currentStep - 1);
   };
 
+  // Toggle pricing based on monthly/yearly subscription
+  const { username, email, phone, yearlySubscription, billingPlan, ...AddOns } = formInputs;
+
+  const selectedBillingPlan = planSelectionRadioData.filter((v) => v.radioValue === billingPlan);
+
+  // Remove type any later
+  // Any type to be fixed later
+  const selectedAddOnsArr = Object.keys(AddOns).filter((el) => (AddOns as any)[el] !== false);
+
+  const selectedAddOns = addOnsCheckboxData.filter((elObj) => {
+    return selectedAddOnsArr.some((elArr) => elObj.checkboxName === elArr);
+  });
+
   // Render the form context provider with its value set to the form data and change handler
   return (
     <FormContext.Provider
-      value={{ formInputs, setFormInputs, changeHandler, currentStep, nextStep, prevStep }}
+      value={{
+        formInputs,
+        setFormInputs,
+        changeHandler,
+        currentStep,
+        nextStep,
+        prevStep,
+        selectedBillingPlan,
+        selectedAddOns,
+      }}
     >
       {children}
     </FormContext.Provider>

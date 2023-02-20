@@ -1,11 +1,12 @@
+import { FC, ReactNode } from 'react';
 import useFormContext from '../hooks/useFormContent';
 import { formHeaderData } from './dummy-data';
 
 interface FormHeaderContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const FormHeaderContainer: React.FC<FormHeaderContainerProps> = ({ children }) => {
+const FormHeaderContainer: FC<FormHeaderContainerProps> = ({ children }) => {
   const { currentStep } = useFormContext();
 
   return (

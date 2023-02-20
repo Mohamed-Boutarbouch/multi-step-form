@@ -21,9 +21,7 @@ const SidebarStepsCounter: React.FC<StepsCounterProps> = ({ id, header, title })
           isCurrentStep,
         )}`}
       >
-        <p className={`font-semibold text-primary-marine-blue ${activeStyleText(isCurrentStep)}`}>
-          {id}
-        </p>
+        <p className={`font-semibold ${activeStyleText(isCurrentStep)}`}>{id}</p>
       </span>
       <div className="hidden md:block">
         <small className="text-xs uppercase text-primary-pastel-blue">{header}</small>
