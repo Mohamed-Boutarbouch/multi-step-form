@@ -8,7 +8,6 @@ export interface PersonalInfoInputProps {
   inputLabel: string;
   inputType: 'text' | 'email' | 'tel';
   inputPlaceholder: string;
-  validate: (value: string) => string | null;
 }
 
 export const personalInfoInputData: PersonalInfoInputProps[] = [
@@ -18,14 +17,6 @@ export const personalInfoInputData: PersonalInfoInputProps[] = [
     inputLabel: 'name',
     inputType: 'text',
     inputPlaceholder: 'e.g. Stephen King',
-    validate: (value: string) => {
-      if (!value) {
-        return 'Name is required';
-      } else if (value.length < 3) {
-        return 'Name is too short';
-      }
-      return null;
-    },
   },
   {
     id: 2,
@@ -33,14 +24,6 @@ export const personalInfoInputData: PersonalInfoInputProps[] = [
     inputLabel: 'email address',
     inputType: 'email',
     inputPlaceholder: 'e.g. stephenking@lorem.com',
-    validate: (value: string) => {
-      if (!value) {
-        return 'Email is required';
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        return 'Email is invalid';
-      }
-      return null;
-    },
   },
   {
     id: 3,
@@ -48,14 +31,6 @@ export const personalInfoInputData: PersonalInfoInputProps[] = [
     inputLabel: 'phone number',
     inputType: 'tel',
     inputPlaceholder: 'e.g. +1 234 567 890',
-    validate: (value: string) => {
-      if (!value) {
-        return 'Phone number is required';
-      } else if (!/^[0-9]{10}$/.test(value)) {
-        return 'Phone number is invalid';
-      }
-      return null;
-    },
   },
 ];
 

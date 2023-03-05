@@ -22,7 +22,6 @@ const PersonalInfoStep = () => {
               {...inputData}
               value={formInputs[inputData.inputName as keyof TextInputProps]}
               onChange={changeHandler}
-              validate={inputData.validate}
             />
           );
         })}
