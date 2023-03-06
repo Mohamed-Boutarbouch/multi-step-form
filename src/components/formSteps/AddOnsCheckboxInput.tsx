@@ -18,6 +18,7 @@ const AddOnsCheckboxInput: React.FC<CheckboxProps> = ({
   onChange,
   isChecked,
   isYearlyPlan,
+  id,
 }) => {
   const monthYearPlan = (
     <p className="text-primary-purplish-blue">{`+$${isYearlyPlan ? perYear : perMonth}/${
@@ -35,13 +36,20 @@ const AddOnsCheckboxInput: React.FC<CheckboxProps> = ({
         className="peer pointer-events-none absolute top-[35%] left-[22px] h-6 w-6 accent-primary-purplish-blue"
         onChange={onChange}
         checked={isChecked}
+        tabIndex={-1}
       />
       <label
         htmlFor={checkboxName}
-        className="flex w-full cursor-pointer items-center justify-between rounded-lg border border-neutral-light-gray bg-white px-5 py-4 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia"
+        className="flex w-full cursor-pointer items-center justify-between rounded-lg border border-neutral-light-gray bg-white px-5 py-4 transition-colors hover:border-primary-purplish-blue focus:border-primary-purplish-blue
+        focus:bg-neutral-magnolia peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia"
+        tabIndex={id}
       >
         <div className="flex items-center justify-between gap-5">
-          <button type="button" className="pointer-events-none h-6 w-6"></button>
+          <button
+            type="button"
+            tabIndex={-1}
+            className="pointer-events-none h-6 w-6 outline-none"
+          ></button>
           <div>
             <p className="font-bold text-primary-marine-blue">{title}</p>
             <p className="text-sm text-neutral-cool-gray">{details}</p>

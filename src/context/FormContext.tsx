@@ -38,6 +38,7 @@ interface FormContextProps {
   selectedAddOns: AddOnsCheckboxProps[];
   totalMonth: number;
   totalYear: number;
+  isFirstStep: boolean;
   isLastStep: boolean;
   confirmSubmissionHandler: () => void;
   submitHandler: (e: FormEvent<HTMLFormElement>) => void;
@@ -67,6 +68,7 @@ export const FormContext = createContext<FormContextProps>({
   selectedAddOns: [],
   totalMonth: 0,
   totalYear: 0,
+  isFirstStep: true,
   isLastStep: false,
   confirmSubmissionHandler: () => {},
   submitHandler: () => {},
@@ -85,6 +87,7 @@ export const FormProvider = ({ children }: FormProviderProps) => {
 
   const maxFormSteps = formHeaderData.length - 1;
 
+  const isFirstStep = currentStep === 0;
   const isLastStep = maxFormSteps === currentStep;
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -170,6 +173,7 @@ export const FormProvider = ({ children }: FormProviderProps) => {
         goToBillingPlan,
         totalMonth,
         totalYear,
+        isFirstStep,
         isLastStep,
         submitHandler,
         confirmSubmissionHandler,

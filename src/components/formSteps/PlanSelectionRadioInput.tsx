@@ -17,6 +17,7 @@ const PlanSelectionRadioInput: React.FC<RadioProps> = ({
   onChange,
   currentPlan,
   isYearlyPlan,
+  id,
 }) => {
   const monthYearPlan = (
     <>
@@ -44,7 +45,10 @@ const PlanSelectionRadioInput: React.FC<RadioProps> = ({
       />
       <label
         htmlFor={radioValue}
-        className="flex w-full cursor-pointer justify-start rounded-lg border border-neutral-light-gray bg-white p-2.5 hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia md:h-52 md:p-3 lg:p-5"
+        className="flex w-full cursor-pointer justify-start rounded-lg border border-neutral-light-gray bg-white p-2.5 transition-all 
+        hover:border-primary-purplish-blue peer-checked:border-primary-purplish-blue peer-checked:bg-neutral-magnolia
+        peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary-strawberry-red md:h-52 md:p-3 lg:p-5"
+        tabIndex={id}
       >
         <div className="flex items-start gap-4 md:flex-col md:justify-between">
           <img src={radioIcon} alt={`${radioValue} icon`} />

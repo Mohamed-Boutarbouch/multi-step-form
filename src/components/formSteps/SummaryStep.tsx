@@ -43,7 +43,7 @@ const SummaryStep = () => {
             </p>
             <button
               type="button"
-              className="w-fit cursor-pointer capitalize text-neutral-cool-gray underline hover:text-primary-purplish-blue"
+              className="w-fit cursor-pointer capitalize text-neutral-cool-gray underline transition-colors hover:text-primary-purplish-blue"
               onClick={goToBillingPlan}
             >
               change
